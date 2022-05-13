@@ -1,0 +1,52 @@
+<div class="row" style="padding-top:30px;">
+    <div class="col-6">
+        <input type="text" class="form-control" name="pnr" [(ngModel)]="pnr" (ngModelChange)="Search()"
+            placeholder="Enter pnr number to Search">
+    </div>
+</div>
+<table class="table table-striped" >
+    <thead>
+        <tr>
+            <th (click)="sort('emailID')">Mail ID<i class="fa fa-sort"></i></th>
+            <th>No of Seats</th>
+            <th>Flight No</th>
+            <th>Flight Name</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Passenger Details</th>
+            <th>Meals</th>
+            <th>PNR</th>
+            <th>Status</th>
+            <th>Cost</th>
+            <th>Paid</th>
+            <th>Discount</th>
+            <th>Cancel Tickets</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let booking of bookings | orderBy: key:reverse | paginate :{itemsPerPage:5,currentPage:p1};">
+            <td>{{booking.emailID}}</td>
+            <td>{{booking.numberOfSeats}}</td>
+            <td>{{booking.flightNo}}</td>
+            <td>{{booking.flightName}}</td>
+            <td>{{booking.flightSource}}</td>
+            <td>{{booking.flightDestination}}</td>
+            <td>{{booking.startTime}}</td>
+            <td>{{booking.endTime}}</td>
+            <td>{{booking.passengerDetails}}</td>
+            <td>{{booking.meals}}</td>
+            <td>{{booking.pnr}}</td>
+            <td>{{booking.status}}</td>
+            <td>{{booking.totalCost}}</td>
+            <td>{{booking.amountPaid}}</td>
+            <td>{{booking.discount}}</td>
+            <td>
+                <button type="button" class="btn btn-danger" (click)="CancelTicket(booking.pnr)" >Cancel</button>
+            </td>
+        </tr>
+    </tbody>
+    <pagination-controls (pageChange)="p1 = $event"></pagination-controls>
+</table>
+

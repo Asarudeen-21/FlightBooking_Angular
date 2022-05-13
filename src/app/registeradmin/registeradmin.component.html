@@ -1,0 +1,153 @@
+<div class="container" style="padding-top:60px;">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card-group">
+                <div class="card p-4">
+                    <div class="card-body">
+                        <form novalidate [formGroup]="myform" (ngSubmit)="Register(myform.value)">
+                            <h1 style="text-align:center">Register</h1>
+                            <div class="form-group" [ngClass]="{
+                     'has-danger': LoginID.invalid && (LoginID.dirty || LoginID.touched),
+                     'has-success': LoginID.valid && (LoginID.dirty || LoginID.touched)
+                     }">
+                                <label>Login ID</label>
+                                <input type="number" class="form-control" formControlName="LoginID" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="LoginID.errors && (LoginID.dirty || LoginID.touched)">
+                                    <p *ngIf="LoginID.errors.required" style="color: red;">Login ID is required</p>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': FirstName.invalid && (FirstName.dirty || FirstName.touched),
+                                'has-success': FirstName.valid && (FirstName.dirty || FirstName.touched)
+                                }">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" formControlName="FirstName" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="FirstName.errors && (FirstName.dirty || FirstName.touched)">
+                                    <p *ngIf="FirstName.errors.required" style="color: red;">First name is required</p>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': LastName.invalid && (LastName.dirty || LastName.touched),
+                                'has-success': LastName.valid && (LastName.dirty || LastName.touched)
+                                }">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" formControlName="LastName" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="LastName.errors && (LastName.dirty || LastName.touched)">
+                                    <p *ngIf="LastName.errors.required" style="color: red;">Last name is required</p>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': Gender.invalid && (Gender.dirty || Gender.touched),
+                                'has-success': Gender.valid && (Gender.dirty || Gender.touched)
+                                }">
+                                <label>Gender</label>
+                                <select formControlName="Gender" class="form-control" required>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Others</option>
+                                </select>
+                                <div class="form-control-feedback" *ngIf="Gender.errors && (Gender.dirty || Gender.touched)">
+                                    <p *ngIf="Gender.errors.required" style="color: red;">Gender is required</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': Age.invalid && (Age.dirty || Age.touched),
+                                'has-success': Age.valid && (Age.dirty || Age.touched)
+                                }">
+                                <label>Age</label>
+                                <input type="number" class="form-control" formControlName="Age" required>
+                                <div class="form-control-feedback" *ngIf="Age.errors && (Age.dirty || Age.touched)">
+                                    <p *ngIf="Age.errors.required" style="color: red;">Age is required</p>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': EmailID.invalid && (EmailID.dirty || EmailID.touched),
+                                'has-success': EmailID.valid && (EmailID.dirty || EmailID.touched)
+                                }">
+                                <label>Email</label>
+                                <input type="email" class="form-control" formControlName="EmailID" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="EmailID.errors && (EmailID.dirty || EmailID.touched)">
+                                    <p *ngIf="EmailID.errors.required" style="color: red;">Email is required</p>
+                                    <!-- <p *ngIf="EmailID.errors.pattern">The email address must contain at least the @ character</p> -->
+                                </div>
+
+                            </div>
+
+                            <div class="form-group" [ngClass]="{
+                                        'has-danger': PhoneNumber.invalid && (PhoneNumber.dirty || PhoneNumber.touched),
+                                        'has-success': PhoneNumber.valid && (PhoneNumber.dirty || PhoneNumber.touched)
+                                        }">
+                                <label>Phone Number</label>
+                                <input type="tel" class="form-control" formControlName="PhoneNumber" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="PhoneNumber.errors && (PhoneNumber.dirty || PhoneNumber.touched)">
+                                    <p *ngIf="PhoneNumber.errors.required" style="color: red;">Phone number is required</p>
+                                    <p *ngIf="PhoneNumber.errors.minlength" style="color: red;">Phone number must be 10 characters long, we
+                                        need
+                                        another
+                                        {{PhoneNumber.errors.minlength.requiredLength -
+                                        PhoneNumber.errors.minlength.actualLength}} characters
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="form-group" [ngClass]="{
+                     'has-danger': Password.invalid && (Password.dirty || Password.touched),
+                     'has-success': Password.valid && (Password.dirty || Password.touched)
+                     }">
+                                <label>Password</label>
+                                <input type="password" class="form-control" formControlName="Password" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="Password.errors && (Password.dirty || Password.touched)">
+                                    <p *ngIf="Password.errors.required" style="color: red;">Password is required</p>
+                                    <p *ngIf="Password.errors.minlength" style="color: red;">Password must be 5 characters long, we need
+                                        another
+                                        {{Password.errors.minlength.requiredLength -
+                                        Password.errors.minlength.actualLength}} characters
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': Role.invalid && (Role.dirty || Role.touched),
+                                'has-success': Role.valid && (Role.dirty || Role.touched)
+                                }">
+                                <label>Register as</label>
+                                <select formControlName="Role" class="form-control" required>
+                                    <option>Admin</option>
+                                    <option>User</option>
+                                </select>
+                                <div class="form-control-feedback"
+                                    *ngIf="Role.errors && (Role.dirty || Role.touched)">
+                                    <p *ngIf="Role.errors.required" style="color: red;">Role is required</p>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding-top:30px;">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-primary px-4">Register</button>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <a routerLink="/login" class="btn btn-link">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

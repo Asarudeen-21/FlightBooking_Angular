@@ -1,0 +1,64 @@
+<div class="container" style="padding-top:60px;">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card-group">
+        <div class="card p-4">
+          <div class="card-body">
+            <form novalidate [formGroup]="myform" (ngSubmit)="onSubmit(myform.value)">
+              <h1 style="text-align:center">Login</h1>
+              <div class="form-group" [ngClass]="{
+       'has-danger': EmailID.invalid && (EmailID.dirty || EmailID.touched),
+       'has-success': EmailID.valid && (EmailID.dirty || EmailID.touched)
+       }">
+                <label>Email</label>
+                <input type="email" class="form-control" formControlName="EmailID" required>
+                <div class="form-control-feedback" *ngIf="EmailID.errors && (EmailID.dirty || EmailID.touched)">
+                  <p *ngIf="EmailID.errors.required" style="color: red;">Email is required</p>
+                  <!-- <p *ngIf="EmailID.errors.pattern">The email address must contain at least the @ character</p> -->
+                </div>
+
+              </div>
+
+              <div class="form-group" [ngClass]="{
+       'has-danger': Password.invalid && (Password.dirty || Password.touched),
+       'has-success': Password.valid && (Password.dirty || Password.touched)
+       }">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="Password" required>
+                <div class="form-control-feedback" *ngIf="Password.errors && (Password.dirty || Password.touched)">
+                  <p *ngIf="Password.errors.required" style="color: red;">Password is required</p>
+                  <p *ngIf="Password.errors.minlength" style="color: red;">Password must be 5 characters long, we need another
+                    {{Password.errors.minlength.requiredLength - Password.errors.minlength.actualLength}} characters
+                  </p>
+                </div>
+              </div>
+
+              <div class="form-group" [ngClass]="{
+                'has-danger': Role.invalid && (Role.dirty || Role.touched),
+                'has-success': Role.valid && (Role.dirty || Role.touched)
+                }">
+                <label>Login as</label>
+                <select formControlName="Role" class="form-control" required>
+                  <option>Admin</option>
+                  <option>User</option>
+                </select>
+                <div class="form-control-feedback" *ngIf="Role.errors && (Role.dirty || Role.touched)">
+                  <p *ngIf="Role.errors.required" style="color: red;">Role is required</p>
+                </div>
+              </div>          
+
+              <div class="row" style="padding-top:30px;">
+                <div class="col-6">
+                  <button type="submit" class="btn btn-primary px-4">Login</button>
+                </div>
+                <div class="col-6">
+                  <a routerLink="/registeradmin" class="btn btn-link">Register</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

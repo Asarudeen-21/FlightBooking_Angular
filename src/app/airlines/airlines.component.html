@@ -1,0 +1,35 @@
+<div class="row" style="padding-top:30px;">
+    <div class="col-4">
+        <input type="text" class="form-control" name="flightName" [(ngModel)]="flightName" (ngModelChange)="Search()"
+            placeholder="Enter Airline Name to Search">
+    </div>
+    <div class="col-4 text-right">
+        <a class="btn btn-info" routerLink="/addairlines">Add</a>
+    </div>
+</div>
+
+<!-- <nav>
+    <input type="text" class="form-control" name="flightName" [(ngModel)]="flightName" (ngModelChange)="Search()"
+           placeholder="Enter Airline Name to Search">
+</nav> -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th (click)="sort('flightName')">Flight Name&nbsp;<i class="fa fa-sort"></i></th>
+            <th (click)="sort('contact')">Contact<i class="fa fa-sort"></i></th>
+            <th (click)="sort('address')">Address<i class="fa fa-sort"></i></th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users | orderBy: key:reverse | paginate :{itemsPerPage:5,currentPage:p};">
+            <td>{{user.flightName}}</td>
+            <td>{{user.contact}}</td>
+            <td>{{user.address}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" (click)="DeleteFlights(user.flightName)">Remove</button>
+            </td>
+        </tr>
+    </tbody>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</table>

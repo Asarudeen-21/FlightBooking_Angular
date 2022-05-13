@@ -1,0 +1,48 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" [destroyOnHide]="false" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>Search</a>
+    <ng-template ngbNavContent>
+      <ngb-alert [dismissible]="false" class="d-block mt-3" type="success">
+        Get your airlines based on the source and destination using page.
+      </ngb-alert>
+
+      <app-search></app-search>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink>Manage Bookings</a>
+    <ng-template ngbNavContent>
+      <ngb-alert [dismissible]="false" class="d-block mt-3" type="success">
+        Reserved airlines are displayed in this page.
+      </ngb-alert>
+
+      <app-managebookings></app-managebookings>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="3">
+    <a ngbNavLink>Discounts</a>
+    <ng-template ngbNavContent>
+      <ngb-alert [dismissible]="false" class="d-block mt-3" type="success">
+        Available discounts are displayed in this page.
+      </ngb-alert>
+      <app-getdiscounts></app-getdiscounts>
+    </ng-template>
+  </li>
+
+  <!-- <li [ngbNavItem]="4">
+    <a ngbNavLink>Booking Tickets</a>
+    <ng-template ngbNavContent>
+      <ngb-alert [dismissible]="false" class="d-block mt-3" type="success">
+        Reserve your tickets using this page.
+      </ngb-alert>
+      <app-availableflights></app-availableflights>
+    </ng-template>
+  </li> -->
+  <div class="logout-button">
+    <button type="submit" class="btn btn-primary px-4" (click)="onClick()" style="height: fit-content;">Logout</button>
+  </div>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2 menu-container"></div> 
+
+<pre>Active: {{ active }}</pre> 

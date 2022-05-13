@@ -1,0 +1,13 @@
+.logout-button{
+    width: 68%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.menu-container{
+    max-width: 1490px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}

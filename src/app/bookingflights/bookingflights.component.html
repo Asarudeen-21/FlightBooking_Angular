@@ -1,0 +1,72 @@
+<div class="container" style="padding-top:60px;">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card-group">
+                <div class="card p-4">
+                    <div class="card-body"> 
+                        <form novalidate [formGroup]="myform" (ngSubmit)="Book(myform.value)">
+                            <h1 style="text-align:center">Airline Booking</h1>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': NumberOfSeats.invalid && (NumberOfSeats.dirty || NumberOfSeats.touched),
+                                'has-success': NumberOfSeats.valid && (NumberOfSeats.dirty || NumberOfSeats.touched)
+                                 }">
+                                <label>No of Seats</label>
+                                <input type="number" class="form-control" formControlName="NumberOfSeats" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="NumberOfSeats.errors && (NumberOfSeats.dirty || NumberOfSeats.touched)">
+                                    <p *ngIf="NumberOfSeats.errors.required" style="color: red;">Number of seats is required</p>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': PassengerDetails.invalid && (PassengerDetails.dirty || PassengerDetails.touched),
+                                'has-success': PassengerDetails.valid && (PassengerDetails.dirty || PassengerDetails.touched)
+                                }">
+                                <label>Passenger Details</label>
+                                <input type="text" class="form-control" formControlName="PassengerDetails" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="PassengerDetails.errors && (PassengerDetails.dirty || PassengerDetails.touched)">
+                                    <p *ngIf="PassengerDetails.errors.required" style="color: red;">Passenger details is required (Format: Name | Gender | Age)</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': MealPreference.invalid && (MealPreference.dirty || MealPreference.touched),
+                                'has-success': MealPreference.valid && (MealPreference.dirty || MealPreference.touched)
+                                 }">
+                                <label>Meal Preference</label>
+                                <select formControlName="MealPreference" class="form-control" required>
+                                    <option>Veg</option>
+                                    <option>Non-veg</option>
+                                    <option>Veg/Non-veg</option>
+                                </select>
+                                <div class="form-control-feedback"
+                                    *ngIf="MealPreference.errors && (MealPreference.dirty || MealPreference.touched)">
+                                    <p *ngIf="MealPreference.errors.required" style="color: red;">Meal preference is required</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Apply Coupon</label>
+                                <input type="text" class="form-control" formControlName="ApplyCoupon" required>
+                            </div>
+
+                            <div class="row" style="padding-top:30px;">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-primary px-4">Book</button>
+                                </div>
+                                <div class="col-6">
+                                    <!-- <a routerLink="/userhome#three" (click)="Cancel()" class="btn btn-link">Cancel</a> -->
+                                    <a routerLink="/userhome" class="btn btn-link">Cancel</a> 
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

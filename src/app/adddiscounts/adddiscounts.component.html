@@ -1,0 +1,50 @@
+<div class="container" style="padding-top:60px;">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card-group">
+                <div class="card p-4">
+                    <div class="card-body"> 
+                        <form novalidate [formGroup]="myform" (ngSubmit)="AddDiscount(myform.value)">
+                            <h1 style="text-align:center">Add Discounts</h1>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': CouponCode.invalid && (CouponCode.dirty || CouponCode.touched),
+                                'has-success': CouponCode.valid && (CouponCode.dirty || CouponCode.touched)
+                                 }">
+                                <label>Coupon code</label>
+                                <input type="text" class="form-control" formControlName="CouponCode" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="CouponCode.errors && (CouponCode.dirty || CouponCode.touched)">
+                                    <p *ngIf="CouponCode.errors.required" style="color: red;">Coupon code is required</p>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': DiscountValue.invalid && (DiscountValue.dirty || DiscountValue.touched),
+                                'has-success': DiscountValue.valid && (DiscountValue.dirty || DiscountValue.touched)
+                                }">
+                                <label>Discount Value</label>
+                                <input type="number" class="form-control" formControlName="DiscountValue" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="DiscountValue.errors && (DiscountValue.dirty || DiscountValue.touched)">
+                                    <p *ngIf="DiscountValue.errors.required" style="color: red;">Discount value is required</p>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding-top:30px;">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-primary px-4">Add</button>
+                                </div>
+                                <div class="col-6">
+                                    <a routerLink="/adminhome" class="btn btn-link">Cancel</a>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

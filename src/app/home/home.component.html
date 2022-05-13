@@ -1,0 +1,39 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" [destroyOnHide]="false" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>Manage Airlines</a>
+    <ng-template ngbNavContent>
+      <ngb-alert [dismissible]="false" class="d-block mt-3" type="success">
+        Available airlines are displayed in this tab's content.
+      </ngb-alert>
+
+      <app-airlines></app-airlines>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink>Manage Schedules</a>
+    <ng-template ngbNavContent>
+      <ngb-alert [dismissible]="false" class="d-block mt-3" type="success">
+        Scheduled airlines are displayed in this tab's content.
+      </ngb-alert>
+
+      <app-flightinventories></app-flightinventories>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="3">
+    <a ngbNavLink>Manage Discounts</a>
+    <ng-template ngbNavContent>
+      <ngb-alert [dismissible]="false" class="d-block mt-3" type="success">
+        The flight discounts are displayed in this tab's content.
+      </ngb-alert>
+      <app-discounts></app-discounts>
+    </ng-template>
+  </li>
+  <div class="logout-button">
+    <button type="submit" class="btn btn-primary px-4" (click)="onClick()" style="height: fit-content;">Logout</button>
+  </div>
+</ul>
+
+
+<div [ngbNavOutlet]="nav" class="mt-2 menu-container"></div>
+
+<!-- <pre>Active: {{ active }}</pre> -->

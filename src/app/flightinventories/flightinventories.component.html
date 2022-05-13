@@ -1,0 +1,52 @@
+<div class="row" style="padding-top:30px;">
+    <div class="col-4">
+        <input type="text" class="form-control" name="airline" [(ngModel)]="airline" (ngModelChange)="Search()"
+            placeholder="Enter Airline Name to Search">
+    </div>
+    <div class="col-4 text-right">
+        <a class="btn btn-info" routerLink="/addinventory">Schedule Airline</a>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th (click)="sort('flightNo')">Flight No<i class="fa fa-sort"></i></th>
+            <th (click)="sort('airline')">Flight Name<i class="fa fa-sort"></i></th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Scheduled Days</th>
+            <th>Business Class Seats</th>
+            <th>General Seats</th>
+            <th>Meals</th>
+            <th>Cost</th>
+            <th>Flight Status</th>
+            <th>Oneway / Roundtrip</th>
+            <th>Active / Block</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let inventory of inventories | orderBy: key:reverse | paginate :{itemsPerPage:3,currentPage:p};">
+            <td>{{inventory.flightNo}}</td>
+            <td>{{inventory.airline}}</td>
+            <td>{{inventory.flightSource}}</td>
+            <td>{{inventory.flightDestination}}</td>
+            <td>{{inventory.startTime}}</td>
+            <td>{{inventory.endTime}}</td>
+            <td>{{inventory.scheduledDays}}</td>
+            <td>{{inventory.businessClassSeats}}</td>
+            <td>{{inventory.generalSeats}}</td>
+            <td>{{inventory.meals}}</td>
+            <td>{{inventory.cost}}</td>
+            <td>{{inventory.flightStatus}}</td>
+            <td>{{inventory.onewayorRoundtrip}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" (click)="ActiveFlights(inventory.flightNo)" >Active</button>
+                <button type="button" class="btn btn-danger" (click)="BlockFlights(inventory.flightNo)" >Block</button>
+            </td>
+        </tr>
+    </tbody>
+    
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+</table>

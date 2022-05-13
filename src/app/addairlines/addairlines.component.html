@@ -1,0 +1,72 @@
+<div class="container" style="padding-top:60px;">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card-group">
+                <div class="card p-4">
+                    <div class="card-body"> 
+                        <form novalidate [formGroup]="myform" (ngSubmit)="AddAirline(myform.value)">
+                            <h1 style="text-align:center">Add Airlines</h1>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': FlightName.invalid && (FlightName.dirty || FlightName.touched),
+                                'has-success': FlightName.valid && (FlightName.dirty || FlightName.touched)
+                                 }">
+                                <label>Airline</label>
+                                <input type="text" class="form-control" formControlName="FlightName" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="FlightName.errors && (FlightName.dirty || FlightName.touched)">
+                                    <p *ngIf="FlightName.errors.required" style="color: red;">Flight name is required</p>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': Contact.invalid && (Contact.dirty || Contact.touched),
+                                'has-success': Contact.valid && (Contact.dirty || Contact.touched)
+                                }">
+                                <label>Contact</label>
+                                <input type="tel" class="form-control" formControlName="Contact" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="Contact.errors && (Contact.dirty || Contact.touched)">
+                                    <p *ngIf="Contact.errors.required" style="color: red;">Contact is required</p>
+                                    <p *ngIf="Contact.errors.minlength" style="color: red;">Contact must be 10 characters long, we need
+                                        another
+                                        {{Contact.errors.minlength.requiredLength -
+                                        Contact.errors.minlength.actualLength}} characters
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="form-group" [ngClass]="{
+                                'has-danger': Address.invalid && (Address.dirty || Address.touched),
+                                'has-success': Address.valid && (Address.dirty || Address.touched)
+                                 }">
+                                <label>Address</label>
+                                <input type="tel" class="form-control" formControlName="Address" required>
+                                <div class="form-control-feedback"
+                                    *ngIf="Address.errors && (Address.dirty || Address.touched)">
+                                    <p *ngIf="Address.errors.required" style="color: red;">Address is required</p>
+                                    <p *ngIf="Address.errors.minlength" style="color: red;">Address must be 3 characters long, we need
+                                        another
+                                        {{Address.errors.minlength.requiredLength -
+                                        Address.errors.minlength.actualLength}} characters
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding-top:30px;">
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-primary px-4">Add</button>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <a routerLink="/adminhome" class="btn btn-link">Cancel</a>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
